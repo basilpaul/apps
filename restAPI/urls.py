@@ -46,10 +46,6 @@ class CustomReadOnlyRouter(SimpleRouter):
 router = CustomReadOnlyRouter()
 router.register(r'hello', views.UserViewSet)
 
-#router = routers.DefaultRouter()
-#router.register(r'hello/@name', views.UserViewSet)
-
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
