@@ -17,10 +17,37 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from rest_framework import routers
+from rest_framework.routers import Route, DynamicRoute, SimpleRouter
 from restAPI.hello import views
 
-router = routers.DefaultRouter()
+class CustomReadOnlyRouter(SimpleRouter):
+    routes = [
+        Route(
+            url=r'^{prefix}$',
+            mapping={'get': 'list'},
+            name='{basename}-list',
+            detail=False,
+            initkwargs={'suffix': 'List'}
+            ),
+        Route(
+            url=r'^{prefix}/{lookup}$',
+            mapping={'get': 'retrieve', 'post': 'create', 'put': 'create'},
+            name='{basename}-detail',
+            detail=True,
+            initkwargs={'suffix': 'Detail'}
+            ),
+        DynamicRoute(
+            url=r'^{prefix}/{lookup}/{url_path}$',
+            name='{basename}-{url_name}',
+            detail=True,
+            initkwargs={}
+            )
+        ]
+router = CustomReadOnlyRouter()
 router.register(r'hello', views.UserViewSet)
+
+#router = routers.DefaultRouter()
+#router.register(r'hello/@name', views.UserViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
