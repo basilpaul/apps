@@ -15,7 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     lookup_field = 'name'
 
-    @action(methods=['post'], detail=True)
+    @action(detail=True)
     def user_names(self, request, pk=None):
         name = self.get_object()
         return Response()
