@@ -14,8 +14,3 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = UserSet.objects.all()
     serializer_class = UserSerializer
     lookup_field = 'name'
-
-    @action(detail=True)
-    def user_names(self, request, pk=None):
-        name = self.get_object()
-        return Response()
