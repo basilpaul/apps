@@ -1,0 +1,34 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: myrestapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restapi-container
+  template:
+    metadata:
+      labels:
+        app: restapi-container
+    spec:
+      containers:
+        - name: myrest
+          image: myrest:1.0
+          ports:
+            - containerPort: 80
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-creds
+                  key: user
+
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-creds
+                  key: password
+
+            - name: POSTGRES_HOST
+              value: postgres-service
