@@ -30,3 +30,7 @@ Kubernetes performs rolling deployment of the application out of box. To deploy 
 2. docker build -t myrest:2.0 .
 3. Update the rest-deployment.yaml with the new version of image
 4. Apply the new image using (kubectl apply -f rest-deployment.yaml)
+
+References
+1. https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#a-pod-cannot-reach-itself-via-service-ip
+2. https://medium.com/@markgituma/kubernetes-local-to-production-with-django-3-postgres-with-migrations-on-minikube-31f2baa8926e
