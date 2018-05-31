@@ -25,8 +25,7 @@ curl $(minikube ip):31317/hello/richard
 
 Deployments
 -----------
-Kubernetes performs rolling deployment of the application out of box
-To deploy a new version:
+Kubernetes performs rolling deployment of the application out of box. To deploy a new version:
 1. Increment the image version and build the docker image:
 2. docker build -t myrest:2.0 .
 3. Update the rest-deployment.yaml with the new version of image
