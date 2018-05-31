@@ -1,11 +1,10 @@
-Project Title
 API
 
 Prerequisites (Please make sure the following are installed to test on your laptop)
-minikube: brew cask install minikube
-virtualbox: https://www.virtualbox.org/wiki/Downloads
-docker: https://docs.docker.com/install/
-brew install kubectl
+1. minikube: brew cask install minikube
+2. virtualbox: https://www.virtualbox.org/wiki/Downloads
+3. docker: https://docs.docker.com/install/
+4. brew install kubectl
 
 Steps to test
 1. Make sure minikube is running (minikube start)
@@ -14,7 +13,7 @@ Steps to test
 4. ./installscript.sh (run the install script)
 
 POST
-curl -X POST -H "Content-Type: application/json" -d '{"name":"richard", "dateOfBirth":"1999-02-12"}' "$(minikube ip):31317/hello/richard"
+1. curl -X POST -H "Content-Type: application/json" -d '{"name":"richard", "dateOfBirth":"1999-02-12"}' "$(minikube ip):31317/hello/richard"
 
 GET
-curl $(minikube ip):31317/hello/richard
+1. curl $(minikube ip):31317/hello/richard
